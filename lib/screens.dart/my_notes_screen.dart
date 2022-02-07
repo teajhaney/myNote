@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:my_notes/model.dart/note_model.dart';
+
 import 'package:my_notes/note_tile.dart';
 import 'package:my_notes/screens.dart/screen.dart';
 
@@ -11,15 +12,6 @@ class MyNotesScreen extends StatefulWidget {
   @override
   State<MyNotesScreen> createState() => _MyNotesScreenState();
 }
-
-var note = <NoteModel>[
-  NoteModel(
-    title: "This is my first Note",
-    body:
-        'I wbwerebfcjbwee  bweinbedinhiwdhiw hg3rbvefdscjbsfdjubdsijbujerbub ',
-    noteDate: DateTime.now(),
-  )
-];
 
 class _MyNotesScreenState extends State<MyNotesScreen> {
   @override
@@ -70,12 +62,37 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
                   shrinkWrap: true,
                   gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                     crossAxisCount: 2,
-                    childAspectRatio: 5 / 8,
-                    crossAxisSpacing: 2,
+                    childAspectRatio: 5 / 7,
+                    crossAxisSpacing: 10,
+                    mainAxisSpacing: 10,
                   ),
                   itemCount: note.length,
                   itemBuilder: (BuildContext context, int index) {
-                    return NoteTile(noteModel: note[index]);
+                    if (note.isEmpty) {
+                      return const Center(
+                        child: Text(
+                          'No note available yet',
+                          style: TextStyle(
+                            fontSize: 20,
+                            color: Colors.white,
+                          ),
+                        ),
+                      );
+                    } else {
+                      return GestureDetector(
+                          onTap: () {
+                            Navigator.pushNamed(
+                              context,
+                              NoteDetails.routeName,
+                              arguments: NoteModel(
+                                title: note[index].title,
+                                body: note[index].body,
+                                noteDate: note[index].noteDate,
+                              ),
+                            );
+                          },
+                          child: NoteTile(noteModel: note[index]));
+                    }
                   },
                 ),
               ),

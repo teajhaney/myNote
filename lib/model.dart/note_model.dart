@@ -1,7 +1,10 @@
+import 'package:intl/intl.dart';
+
 class NoteModel {
   String title;
   String body;
   DateTime noteDate;
+
   NoteModel({
     required this.title,
     required this.body,
@@ -16,3 +19,5 @@ class NoteModel {
     });
   }
 }
+
+var note = <NoteModel>[];

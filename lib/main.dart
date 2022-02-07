@@ -12,7 +12,7 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
+    // SystemChrome.setEnabledSystemUIMode(SystemUiMode.leanBack);
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       routes: {
         '/': (context) => const MyNotesScreen(),
         '/AddNote': (context) => const AddNote(),
-        '/NoteDetails': (context) => NoteDetails(),
+        '/NoteDetails': (context) => const NoteDetails(),
       },
     );
   }
