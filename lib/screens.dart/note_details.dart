@@ -80,9 +80,10 @@ class _NoteDetailsState extends State<NoteDetails> {
                                 iconSize: 25,
                                 onPressed: () {
                                   setState(() {
-                                    note.removeAt(args.noteId);
-                                    // note.removeWhere(
-                                    //     (note) => note.noteId == args.noteId);
+                                    // note.removeAt(args.noteId);
+                                    // note.remove(args);
+                                    note.removeWhere(
+                                        (note) => note.noteId == args.noteId);
                                     // note.insert(
                                     //     index,
                                     //     NoteModel(

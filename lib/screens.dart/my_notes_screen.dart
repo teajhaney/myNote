@@ -66,7 +66,7 @@ class _MyNotesScreenState extends State<MyNotesScreen> {
                     crossAxisSpacing: 10,
                     mainAxisSpacing: 10,
                   ),
-                  itemCount: note.length++,
+                  itemCount: note.length,
                   itemBuilder: (BuildContext context, int index) {
                     if (note.isEmpty) {
                       return const Center(
