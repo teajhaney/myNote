@@ -1,10 +1,8 @@
 import 'dart:math';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:my_notes/model.dart/note_model.dart';
 import 'package:intl/intl.dart';
-import 'package:my_notes/screens.dart/note_details.dart';
 
 class NoteTile extends StatelessWidget {
   final NoteModel noteModel;
@@ -26,8 +24,7 @@ class NoteTile extends StatelessWidget {
         Container(
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
-              color:
-                  Colors.primaries[Random().nextInt(Colors.primaries.length)],
+              color: noteModel.color,
             ),
             child: Padding(
               padding: const EdgeInsets.symmetric(vertical: 20, horizontal: 20),

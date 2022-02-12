@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:intl/intl.dart';
@@ -34,7 +32,8 @@ class _NoteDetailsState extends State<NoteDetails> {
   late String title = '';
   late String body = '';
   DateTime noteDate = DateTime.now();
-  late int noteId;
+  late int index;
+
   @override
   Widget build(BuildContext context) {
     final args = ModalRoute.of(context)!.settings.arguments as NoteModel;
@@ -81,7 +80,25 @@ class _NoteDetailsState extends State<NoteDetails> {
                                 iconSize: 25,
                                 onPressed: () {
                                   setState(() {
+                                    note.removeAt(args.noteId);
+                                    // note.removeWhere(
+                                    //     (note) => note.noteId == args.noteId);
+                                    // note.insert(
+                                    //     index,
+                                    //     NoteModel(
+                                    //         title: args.title,
+                                    //         body: args.body,
+                                    //         noteDate: args.noteDate,
+                                    //         noteId: args.noteId));
+
+                                    note.add(NoteModel(
+                                        noteId: args.noteId,
+                                        title: args.title,
+                                        body: args.body,
+                                        noteDate: args.noteDate));
+
                                     NoteModel(
+                                      noteId: args.noteId,
                                       title: args.title,
                                       body: args.body,
                                       noteDate: args.noteDate,
@@ -221,7 +238,7 @@ class _NoteDetailsState extends State<NoteDetails> {
                         errorBorder: InputBorder.none,
                         disabledBorder: InputBorder.none,
                       ),
-                      initialValue: args.title,
+                      initialValue: args.body,
                       textInputAction: TextInputAction.done,
                       onChanged: (value) {
                         setState(() => {args.body = value});

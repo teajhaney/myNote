@@ -30,7 +30,7 @@ class _AddNoteState extends State<AddNote> {
   late String title = '';
   late String body = '';
   DateTime noteDate = DateTime.now();
-  late int noteId;
+  int index = Random().nextInt(10000000);
 
   @override
   Widget build(BuildContext context) {
@@ -73,17 +73,20 @@ class _AddNoteState extends State<AddNote> {
                             title = _title.text;
                             body = _notes.text;
                             noteDate = DateTime.now();
-                            noteId = Random().nextInt(1000000000);
+
                             note.add(NoteModel(
+                              noteId: index,
                               title: title,
                               body: body,
                               noteDate: noteDate,
                             ));
+                            note.reversed.toList();
                           });
                           Navigator.pushNamed(
                             context,
                             NoteDetails.routeName,
                             arguments: NoteModel(
+                              noteId: 0,
                               title: title,
                               body: body,
                               noteDate: noteDate,
